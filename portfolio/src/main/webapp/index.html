@@ -1,18 +1,175 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
+
+<script src="script.js"></script>
+</head>
+<body>
+
+<div class="main">
+<h1>Majdi's Portfolio</h1>
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+<hr>
+
+
+
+
+        <!-- sidenav -->
+<div id="mySidenav" class="sidenav">
+ 
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+   <button  class="buttonDark-mode" onclick="myFunction()">Dark Mode</button>
+  <a href="#aboutMe">About Me</a>
+  <a href="#project">Project</a>
+  <a href="#favorite">Favorites</a>
+  <a href="#contact">Contact</a>
+  
+</div>
+
+
+   
+<h2><strong> PORTFOLIO</strong></h2>
+<div id="aboutMe">
+
+<h3>About Me<hr></h3>
+
+<div class="container">
+  <img id="img" src="./images/nature2.png"  style="width:100%;">
+  <div class="text-block">
+    <h4>Majdi Nagi</h4>
+  </div>
+    <hr>
+</div>
+  <strong>
+    <p>I'm Majdi Nagi, and I'm from Yemen. I live in New York City, and I'm 21 years old.</p>
+    <p>I am currently a computer science student at Brooklyn College junior year.</p>
+    <p> I spend most of my time on programming and learning new technologies.</p>
+    <p>I am truly a self-learner who like to take challenges and excel his programming skills.</p>
+    <p>I like nature views and the picture above is one of my favorite.</p>
+ </strong>
+</div>
+
+
+
+<div id="project" >
+  <h3>My Projects.<hr></h3>
+
+<div class="row">
+  <div class="column">
+    <div class="content">
+      <a href="https://github.com/majdinagi9/data-structure">
+      <img id="img" src="./images/data-structure.png" style="width: 100%; height: 100%;"></a>
+      <h3> Data Structure</h3>
+      <p>In data structure class at Bmcc I have done this projects. The first project is linked list program. The second is using stack, a postfix calculator. The third is using heap, EBike service and priority. Finally, using vector...</p>
     </div>
-  </body>
+  </div>
+  <div class="column">
+    <div class="content">
+      <a href="https://github.com/majdinagi9/online-store">
+    <img id="img" src="./images/online-store.jpeg"  style="width: 100%; height: 100%;" ></a>
+      <h3>Online Store</h3>
+      <p>In Software Development class at Bmcc I have done online-store project. The online-store is a coronavirus store supplies that provide the necessary equipments for the customers. Also, I had to make it run on AWS could. </p>
+    </div>
+  </div>
+
+  
+  <div class="column">
+    <div class="content">
+      <a href="https://github.com/majdinagi9/tax_calculation">
+    <img id="img" src="./images/Tax_Calculator.png" style="width:100%"></a>
+      <h3>Tax Calculator</h3>
+      <p>In the Tax Calculator website will collect some information about the user like username and password than if they are single or married. After that, based on their income it will give them the right calculation of their return. </p>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="content">
+      <a href="https://github.com/majdinagi9/msg-encryption">
+    <img id="img" src="./images/mes-encryption.jpeg"  style="width:100%"></a>
+      <h3>Message Encryption</h3>
+      <p>In the C++ advance class at Bmcc I have done meg-encryption project. In C++ I created a program that will Encrypt the Message that the user enter using Caesar Cipher Algorithm into a random message by shifting the letters of the message. </p>
+
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+<div id="favorite" >
+  <h3>Favorite Things.<hr></h3>
+
+<div class="row">
+  <div class="column">
+    <div class="content">
+    <img id="img" src="./images/majdi.jpg"  style="width:100%">
+      <h3>My Favorite Picture</h3>
+      <p>This is my favorite because I was laughing by accident and it was taken at the same time. </p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="content">
+    <img id="img" src="./images/soccer.jpeg"  style="width:100%">
+      <h3>My Sport</h3>
+      <p>I have tried so many sprots, but nothing is more intersting to me more then Soccer. I like to play Soccer a lot. I was rised whole my life playing Soccer. Another sports I like is Karate as well. </p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="content">
+
+    <img id="img" src="./images/sweet.jpeg"  style="width:100%">
+      <h3>My Favorite Dessert</h3>
+      <p>This dessert is known as Baklava. This is one of my favorite dessert. It's more popular in the Arabic countries. I can stay the whole day just eating this Baklava</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="content">
+    <img id="img" src="./images/socatra.jpeg"  style="width:100%">
+      <h3> My Favorite Socotra</h3>
+      <p>This is an island in my country I would like to visit one day. The island is has a unique species from other island.</p>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="contact" >
+  <h3>Contact<hr></h3>
+<footer class="footer-distributed">
+
+			<div class="footer-right">
+
+				<a href="https://www.facebook.com/profile.php?id=100018763358868"><i class="fa fa-facebook"></i></a>
+				<a href="https://www.instagram.com/majdi.naj/"><i class="fa fa-instagram"></i></a>
+				<a href="https://www.linkedin.com/in/majdi-nagi-26b83a17b/"><i class="fa fa-linkedin"></i></a>
+				<a href="https://github.com/majdinagi9"><i class="fa fa-github"></i></a>
+
+			</div>
+
+			<div class="footer-left">
+
+				<p class="footer-links">
+					<a class="link-1" href="#">Portfolio</a>
+
+					<a href="#project">My Projects</a>
+
+					<a href="#favorite">Favorites</a>
+
+
+					<a href="#contact">Contact</a>
+				</p>
+				<p>Majdj's Portfolio &copy; 2020</p>
+			</div>
+
+		</footer>
+</div>
+
+
+</body>
 </html>
