@@ -19,14 +19,58 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
+import java.util.ArrayList;
+import java.util.List;
+import com.google.gson.Gson;
+import com.google.sps.servlets.Comment;
 
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
+
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
   @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+    String Usercomment = request.getParameter("message");
+    String name = request.getParameter("name");
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    Entity messageEntity = new Entity("portfolioComments");
+    messageEntity.setProperty("name", name);
+    messageEntity.setProperty("message", Usercomment);
+    datastore.put(messageEntity);
+
+    response.sendRedirect("/index.html#contact");
+  }
+
+  @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/html;");
-    response.getWriter().println("Hello Majdi!");
+
+    response.setContentType("application/json;");
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    Query query = new Query("portfolioComments");
+    PreparedQuery results = datastore.prepare(query);
+
+
+    List < Comment > comments = new ArrayList < > ();
+    for (Entity entity: results.asIterable()) {
+      String name = (String) entity.getProperty("name");
+      String Usercomment = (String) entity.getProperty("message");
+
+      Comment comment = new Comment(name, Usercomment);
+      comments.add(comment);
+    }
+
+    Gson gson = new Gson();
+
+    response.setContentType("application/json;");
+    response.getWriter().println(gson.toJson(comments));
   }
 }
