@@ -250,3 +250,18 @@ input[type=submit]:hover {
   background-color: #f2f2f2;
   padding: 20px;
 }
+  #text {
+        width: 500px;
+        height: 125px;
+      }
+
+      #language {
+        display: block;
+        margin-top: 25px;
+        margin-bottom: 25px;
+      }
+#map {
+  border: thin solid black;
+  height: 500px;
+  width: auto;
+}

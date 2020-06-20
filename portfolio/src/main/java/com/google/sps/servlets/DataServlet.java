@@ -19,16 +19,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
+
 import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.Gson;
 import com.google.sps.servlets.Comment;
+
+import com.google.sps.servlets.TranslationServlet;
 
 
 @WebServlet("/data")
@@ -49,28 +54,4 @@ public class DataServlet extends HttpServlet {
     response.sendRedirect("/index.html#contact");
   }
 
-  @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-    response.setContentType("application/json;");
-
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    Query query = new Query("portfolioComments");
-    PreparedQuery results = datastore.prepare(query);
-
-
-    List < Comment > comments = new ArrayList < > ();
-    for (Entity entity: results.asIterable()) {
-      String name = (String) entity.getProperty("name");
-      String Usercomment = (String) entity.getProperty("message");
-
-      Comment comment = new Comment(name, Usercomment);
-      comments.add(comment);
-    }
-
-    Gson gson = new Gson();
-
-    response.setContentType("application/json;");
-    response.getWriter().println(gson.toJson(comments));
-  }
 }

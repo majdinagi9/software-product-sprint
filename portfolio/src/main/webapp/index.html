@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
+    <title>My Portfolio</title>
   <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfZsNNljFVCUke2yKYyLLfPMWXDE3A-wI"></script>
     <script src="script.js"></script>
   </head>
-  <body onload="printComment()">
+  <!-- onload="printComment()" -->
+  <body onload="printComment()" >
     <div class="main">
     <h1>Majdi's Portfolio</h1>
     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
@@ -119,20 +123,37 @@
         </div>
       </div>
     </div>
+    <h3>My favorite places in NYC. Share with me yours.</h3>
+            <hr>
+  <div id="map"></div>
     <div id="contact" >
-      <h3>
-        Contact
+        <h3>
+        Comments & Contact
         <hr>
-      </h3>
-      <ul id="comment-container"></ul>
+        </h3>
+    <ul id="translate-comment-container"></ul>
+      
+     <form action="/translate" method="Post">
+    <select name="languageCode" >
+       <option value="en">English</option>
+      <option  value="zh">Chinese</option>
+      <option  value="es">Spanish</option>
+      <option  value="hi">Hindi</option>
+      <option  value="ar">Arabic</option>
+     </select>
+    
+    <button onclick="printComment()"> Translate</button>
+     </form>
       <h3>Leave a comment</h3>
       <div id="submitingComment">
         <form action="/data" method="POST">
           <label>Name</label>
-          <input type="text" name="name" placeholder="Your name..">
+          <input type="text" name="name"  placeholder="Your name.." required>
           <label>Comment</label>
-          <input type="text"  name="message" placeholder="Your comment..">
-          <input type="submit" value="Comment">
+          <input type="text"  name="message"  placeholder="Your comment.." required>
+          
+         
+           <input type="submit" value="Comment">
         </form>
       </div>
       <footer class="footer-distributed">
@@ -144,7 +165,7 @@
         </div>
         <div class="footer-left">
           <p class="footer-links">
-            <a class="link-1" href="#">Portfolio</a>
+            <a href="#">Portfolio</a>
             <a href="#project">My Projects</a>
             <a href="#favorite">Favorites</a>
             <a href="#contact">Contact</a>
