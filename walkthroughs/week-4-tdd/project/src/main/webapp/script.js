@@ -12,10 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/**
- * Collects the information from the web form and sends the meeting request to
- * the server. Using the response, it lists the options reported by the server.
- */
+
 function sendMeetingRequest() {
   const duration = document.getElementById('duration').value;
 
@@ -24,9 +21,14 @@ function sendMeetingRequest() {
   // split it into an array of names
   const attendees = attendeesNamesString.split(/\s*,\s*/);
 
+// comma-separated list of names
+  const optionalAttendeesNamesString = document.getElementById('optional-attendees').value;
+  // split it into an array of names
+  const optionalAttendees = optionalAttendeesNamesString.split(/\s*,\s*/);
+
   // Create the request to send to the server using the data we collected from
   // the web form.
-  const meetingRequest = new MeetingRequest(duration, attendees);
+  const meetingRequest = new MeetingRequest(duration, attendees, optionalAttendees);
 
   queryServer(meetingRequest).then((timeRanges) => {
     updateResultsOnPage(timeRanges);
@@ -87,9 +89,10 @@ function timeToString(totalMinutes) {
  * Request for possible meeting times.
  */
 class MeetingRequest {
-  constructor(duration, attendees) {
+  constructor(duration, attendees, optional_attendees) {
     this.duration = duration;
     this.attendees = attendees;
+    this.optional_attendees = optional_attendees;
   }
 }
 
